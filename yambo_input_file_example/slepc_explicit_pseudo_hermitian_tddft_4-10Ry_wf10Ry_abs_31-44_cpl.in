@@ -1,0 +1,42 @@
+#
+# Solver
+#
+bss                              # [R] BSE solver
+BSSmod= "s"                      # [BSS] (h)aydock/(d)iagonalization/(s)lepc/(i)nversion/(t)ddft
+BSSSlepcMatrixFormat="explicit" # [SLEPC] Matrix type (shell|explicit|explicit-debug)
+BSSSlepcApproach="Krylov-Shur"
+BSSNEig= 100                     # [SLEPC] Number of eigenvalues to compute
+BSSEnTarget= 0.000000      eV    # [SLEPC] Target energy to find eigenvalues
+BSSSlepcMaxIt=0                  # [SLEPC] Maximum number of iterations
+#
+# Kernel
+#
+optics                           # [R] Linear Response optical properties
+bse                              # [R][BSE] Bethe Salpeter Equation.
+tddft                            # [R][K] Use TDDFT kernel
+BSEprop= "abs"                  # [BSS] Can be any among abs/jdos/kerr/asymm/anHAll/magn/dich/photolum/esrt
+BSKmod= "ALDA"                   # [BSE] IP/Hartree/HF/ALDA/SEX/BSfxc
+BSEmod= "coupling"               # [BSE] resonant/retarded/coupling
+
+FFTGvecs=  10 Ry
+BSENGexx=   4 Ry                 # [BSK] Exchange components
+BSENGfxc=  10 Ry                 # [BSK] Fxc components
+% BSEQptR
+ 1 | 1 |                             # [BSK] Transferred momenta range
+%
+% BSEBands
+  31 | 44 |                         # [BSK] Bands range
+%
+#
+# Sover common
+#
+% BEnRange
+ 0.000000 | 10.000000 |         eV    # [BSS] Energy range
+%
+% BDmRange
+ 0.10 | 0.10 |   eV    # [BSS] Damping range
+%
+BEnSteps= 1000                    # [BSS] Energy steps
+% BLongDir
+ 0.000000 | 0.000000 | 1.000000 |        # [BSS] [cc] Electric Field versor
+%
